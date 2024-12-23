@@ -1,0 +1,17 @@
+[Unit]
+Description=WSO2 Identity Server
+After=network.target
+
+[Service]
+User=wso2carbon
+Group=wso2carbon
+WorkingDirectory=/opt/wso2is-7.0.0/bin
+ExecStart=/opt/wso2is-7.0.0/bin/wso2server.sh start > /dev/null 2>&1
+ExecStop=/opt/wso2is-7.0.0/bin/wso2server.sh stop > /dev/null 2>&1
+Type=forking
+Restart=on-failure
+Environment=JAVA_HOME=/opt/java
+Environment=CARBON_HOME=/opt/wso2is-7.0.0
+
+[Install]
+WantedBy=multi-user.target
